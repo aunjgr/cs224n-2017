@@ -79,12 +79,15 @@ def sgd(f, x0, step, iterations, postprocessing=None, useSaved=False,
 
     expcost = None
 
+    momentum, v = 0.9, 0
+
     for iter in xrange(start_iter + 1, iterations + 1):
         # Don't forget to apply the postprocessing after every iteration!
         # You might want to print the progress every few iterations.
 
         cost, grad = f(x)
-        x -= step * grad
+        v = v * momentum + step * grad
+        x -= v
         x = postprocessing(x)
 
         if iter % PRINT_EVERY == 0:
