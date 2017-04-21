@@ -14,7 +14,7 @@ def normalizeRows(x):
     unit length.
     """
 
-    x /= np.linalg.norm(x, axis=1).reshape(-1, 1)
+    x /= np.linalg.norm(x, axis=1, keepdims=True)
 
     return x
 
