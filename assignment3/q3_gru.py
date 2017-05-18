@@ -81,7 +81,7 @@ class SequencePredictor(Model):
         elif self.config.cell == "gru":
             cell = GRUCell(1, 1)
         elif self.config.cell == "lstm":
-            cell = tf.nn.rnn_cell.LSTMCell(1)
+            cell = tf.contrib.rnn.LSTMCell(1)
         else:
             raise ValueError("Unsupported cell type.")
 
